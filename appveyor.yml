@@ -12,6 +12,7 @@ environment:
       MSVCYEAR: "vs2008"
       MSVCABR: "9"
       VC_VER: 9.0
+      PYTHONPATH: c:\Python27\
       PYTHONPATHOMNI: "/cygdrive/c/Python27/python"
     - platform: x64
       ARCH: x64-msvc9
@@ -21,6 +22,7 @@ environment:
       MSVCYEAR: "vs2008"
       MSVCABR: "9"
       VC_VER: 9.0
+      PYTHONPATH: c:\Python27-x64\
       PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
     - platform: win32
       ARCH: win32-msvc10
@@ -30,6 +32,7 @@ environment:
       MSVCYEAR: "vs2010"
       MSVCABR: "10"
       VC_VER: 10.0
+      PYTHONPATH: c:\Python33\
       PYTHONPATHOMNI: "/cygdrive/c/Python33/python"
     - platform: x64
       ARCH: x64-msvc10
@@ -39,6 +42,7 @@ environment:
       MSVCYEAR: "vs2010"
       MSVCABR: "10"
       VC_VER: 10.0
+      PYTHONPATH: c:\Python33-x64\
       PYTHONPATHOMNI: "/cygdrive/c/Python33-x64/python"
     - platform: win32
       ARCH: win32-msvc12
@@ -48,6 +52,7 @@ environment:
       MSVCYEAR: "vs2013"
       MSVCABR: "13"
       VC_VER: 13.0
+      PYTHONPATH: c:\Python33\
       PYTHONPATHOMNI: "/cygdrive/c/Python33/python"
     - platform: x64
       ARCH: x64-msvc12
@@ -57,6 +62,7 @@ environment:
       MSVCYEAR: "vs2013"
       MSVCABR: "13"
       VC_VER: 13.0
+      PYTHONPATH: c:\Python33-x64\
       PYTHONPATHOMNI: "/cygdrive/c/Python33-x64/python"
     - platform: win32
       ARCH: win32-msvc14
@@ -129,7 +135,7 @@ install:
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_$env:MSVCABR.mk
   - cmd: type "c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_%MSVCABR%.mk"
   - cmd: set path=%path%;c:\cygwin64\bin
-  - cmd: if %MSVCABR%=="14" set path=%path%;%PYTHONPATH%
+  - cmd: set path=%path%;%PYTHONPATH%
 
 build_script:
   - cmd: make export
