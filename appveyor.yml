@@ -138,6 +138,8 @@ install:
 
 build_script:
   - cmd: if %ARCH%==x64-msvc10 "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 /%configuration%
+  - cmd: set path=%path%;c:\cygwin64\bin
+  - cmd: cl
   - cmd: make export
 after_build:
   - cmd: cd "C:\projects\omniorb-windows-ci"
