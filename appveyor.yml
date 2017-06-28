@@ -5,16 +5,6 @@ image: Visual Studio 2015
 environment:
   matrix:
     - platform: x64
-      ARCH: x64-msvc9
-      configuration: Release
-      CMAKE_GENERATOR: Visual Studio 9 2008 Win64
-      MSVCVERSION: v90
-      MSVCYEAR: vs2008
-      MSVCABR: 9
-      VC_VER: 9.0
-      PYTHONPATH: c:\Python27-x64\
-      PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
-    - platform: x64
       ARCH: x64-msvc10
       configuration: Release
       CMAKE_GENERATOR: "Visual Studio 10 2010 Win64"
@@ -34,6 +24,16 @@ environment:
       VC_VER: 9.0
       PYTHONPATH: c:\Python27\
       PYTHONPATHOMNI: "/cygdrive/c/Python27/python"
+    - platform: x64
+      ARCH: x64-msvc9
+      configuration: Release
+      CMAKE_GENERATOR: Visual Studio 9 2008 Win64
+      MSVCVERSION: v90
+      MSVCYEAR: vs2008
+      MSVCABR: 9
+      VC_VER: 9.0
+      PYTHONPATH: c:\Python27-x64\
+      PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
     - platform: win32
       ARCH: win32-msvc10
       configuration: Release
@@ -111,17 +111,12 @@ init:
 install: 
   - cmd: if %ARCH%==win32-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc9 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
-  - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x86_amd64
-  - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" amd64
-  - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat" x64
   - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat"
-  #- cmd: if %ARCH%==x64-msvc9 "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 /%configuration%
-  - cmd: if %ARCH%==x64-msvc9 set path=C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\amd64;%path%
   - cmd: if %ARCH%==win32-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86_amd64
   - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64
-  - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x64
+  - cmd: if %ARCH%==x64-msvc10 "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd\vcvars64.bat"
   - cmd: if %ARCH%==x64-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc10 "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 /%configuration%
   - cmd: if %ARCH%==win32-msvc12 call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
