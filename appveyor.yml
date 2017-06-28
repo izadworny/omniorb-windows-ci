@@ -135,9 +135,12 @@ install:
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_$env:MSVCABR.mk
   - cmd: type "c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_%MSVCABR%.mk"
   - cmd: set path=%path%;c:\cygwin64\bin
-  - cmd: set path=%path%;%PYTHONPATH%
+  - cmd: if %MSVCABR%=="14" set path=%path%;%PYTHONPATH%
+  - cmd: if %ARCH%==x64-msvc14 set path=%path%;c:\cygwin64\bin;%PYTHONPATH%
+  - cmd: set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path% 
 
 build_script:
+  - cmd: set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path% 
   - cmd: make export
 after_build:
   - cmd: cd "C:\projects\omniorb-windows-ci"
