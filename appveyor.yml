@@ -137,7 +137,8 @@ install:
   #- cmd: set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path% 
 
 build_script:
-  - cmd: make export
+  - cmd: if %ARCH%==x64-msvc10 "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 /%configuration%
+         make export
 after_build:
   - cmd: cd "C:\projects\omniorb-windows-ci"
   # Generating zip
