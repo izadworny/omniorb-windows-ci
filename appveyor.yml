@@ -114,10 +114,6 @@ install:
   - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat"
   - cmd: if %ARCH%==win32-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
-  - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" x86_amd64
-  - cmd: if %ARCH%==x64-msvc10 call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat" amd64
-  - cmd: if %ARCH%==x64-msvc10 "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\amd64\vcvars64.bat"
-  - cmd: if %ARCH%==x64-msvc10 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc10 "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64 /%configuration%
   - cmd: if %ARCH%==win32-msvc12 call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat"
@@ -136,7 +132,7 @@ install:
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_$env:MSVCABR.mk
   - cmd: type "c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_%MSVCABR%.mk"
   - cmd: set path=%path%;c:\cygwin64\bin
-  #- cmd: if %MSVCABR%=="14" set path=%path%;%PYTHONPATH%
+  - cmd: if %MSVCABR%=="14" set path=%path%;%PYTHONPATH%
   #- cmd: if %ARCH%==x64-msvc14 set path=%path%;c:\cygwin64\bin;%PYTHONPATH%
   #- cmd: set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path% 
 
