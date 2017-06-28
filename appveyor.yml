@@ -21,7 +21,7 @@ environment:
       MSVCYEAR: "vs2008"
       MSVCABR: "9"
       VC_VER: 9.0
-      PYTHONPATHOMNI: "/cygdrive/c/Python27/python"
+      PYTHONPATHOMNI: "/cygdrive/c/Python27-x64/python"
     - platform: win32
       ARCH: win32-msvc10
       configuration: Release
