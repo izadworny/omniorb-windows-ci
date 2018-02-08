@@ -139,7 +139,8 @@ init:
   - cmd: cd "C:\projects\omniorb-windows-ci"
   
 install:
-  - cmd: set path=;c:\cygwin64\bin;%PYTHONPATH%
+  - cmd: set PYTHONPATH=%PYTHONPATH%
+  - cmd: set path=c:\cygwin64\bin;%PYTHONPATH%
   - cmd: if %ARCH%==win32-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc9 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat"
@@ -152,7 +153,6 @@ install:
   - cmd: if %ARCH%==x64-msvc14 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x64
   - cmd: echo "Generator='%CMAKE_GENERATOR%'"
   - cmd: echo "Platform='%Platform%'"
-  - cmd: set PYTHONPATH=%PYTHONPATH%
   # OmniOrb
   - cmd: cd "C:\projects\omniORB-4.2.1"
   - cmd: set MSVCABR  = %MSVCABR%
