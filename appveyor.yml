@@ -138,7 +138,8 @@ init:
   - cmd: if %ARCH%==x32-msvc9 call C:\projects\vs2008_patch\setup_x86.bat
   - cmd: cd "C:\projects\omniorb-windows-ci"
   
-install: 
+install:
+  - cmd: set path=;c:\cygwin64\bin;%PYTHONPATH%
   - cmd: if %ARCH%==win32-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\vcvarsall.bat"
   - cmd: if %ARCH%==win32-msvc9 set path=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%path%
   - cmd: if %ARCH%==x64-msvc9 call "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\vcvars64.bat"
@@ -167,7 +168,6 @@ install:
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk
   - cmd: type "c:\projects\omniORB-4.2.1\mk\platforms\x86_%platform%_vs_%MSVCABR%.mk"
   #- cmd: set path=%path%;c:\cygwin64\bin
-  - cmd: set path=%path%;C:\Program Files\Git\usr\bin\;c:\cygwin64\bin;
   - cmd: if %ARCH%==win32-msvc14 set path=%path%;%PYTHONPATH%
   - cmd: if %ARCH%==x64-msvc14 set path=%path%;%PYTHONPATH%
   #- cmd: if %ARCH%==x64-msvc14 set path=%path%;c:\cygwin64\bin;%PYTHONPATH%
@@ -184,7 +184,7 @@ after_build:
 
 on_finish:
   #RDP for finish
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  #- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 artifacts:
   - path: ./*.zip
