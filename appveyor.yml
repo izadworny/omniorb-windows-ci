@@ -122,6 +122,7 @@ install:
   - cmd: cd "C:\projects\omniORB-4.2.1"
   - cmd: set MSVCABR  = %MSVCABR%
   - cmd: set platform  = %platform%
+  - cmd: if %ARCH%==win32-msvc15 set platform = win32
   - cmd: set PYTHONPATHOMNI = %PYTHONPATHOMNI%
   # Create 64 versions
   - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_14.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_15.mk
