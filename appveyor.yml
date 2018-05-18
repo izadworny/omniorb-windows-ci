@@ -93,8 +93,6 @@ environment:
       PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
       PYVER: "py35"
 init:
-  # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
-  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   #RDP from start
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # OmniOrb
@@ -127,7 +125,11 @@ install:
   - cmd: set PYTHONPATHOMNI = %PYTHONPATHOMNI%
   # Create 64 versions
   - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_%MSVCABR%.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_%MSVCABR%.mk
-  # Add 64 links 
+  - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_14.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_15.mk
+  - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_14.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_15.mk
+  - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs15.mk) | foreach-object {$_ -replace "_vc14", "_vc15"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs15.mk
+  - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs15.mk) | foreach-object {$_ -replace "_vc14", "_vc15"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs15.mk
+  # Add 64 links
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "-DEBUG", "-DEBUG -MACHINE:X64"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_${env:MSVCABR}.mk
   # Editing OmniOrb config
   - cmd: cd "C:\projects\omniORB-4.2.1\src"
