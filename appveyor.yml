@@ -133,17 +133,17 @@ install:
   # Editing OmniOrb config
   - cmd: cd "C:\projects\omniORB-4.2.1\src"
 
-  - ps: if %ARCH%==win32-msvc14 (get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk
-  - ps: if %ARCH%==win32-msvc14 (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk
+  - ps: if (%ARCH% -Match "win32-msvc14") {(get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk }
+  - ps: if (%ARCH% -Match "win32-msvc14") {(get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk }
 
-  - ps: if %ARCH%==x64-msvc14 (get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk
-  - ps: if %ARCH%==x64-msvc14 (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk
+  - ps: if (%ARCH% -Match "x64-msvc14") {(get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk }
+  - ps: if (%ARCH% -Match "x64-msvc14") {(get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk }
 
-  - ps: if %ARCH%==win32-msvc15 (get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_win32_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk
-  - ps: if %ARCH%==win32-msvc15 (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_$env:MSVCABR.mk
+  - ps: if (%ARCH% -Match "win32-msvc15") {(get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_win32_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk }
+  - ps: if (%ARCH% -Match "win32-msvc15") {(get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_$env:MSVCABR.mk }
 
-  - ps: if %ARCH%==x64-msvc15 (get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk
-  - ps: if %ARCH%==x64-msvc15 (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk
+  - ps: if (%ARCH% -Match "x64-msvc15") {(get-content c:\projects\omniORB-4.2.1\config\config.mk) | foreach-object {$_ -replace "\#platform = x86_win32_vs_${env:MSVCABR}", "platform = x86_${env:platform}_vs_${env:MSVCABR}"} | set-content c:\projects\omniORB-4.2.1\config\config.mk }
+  - ps: if (%ARCH% -Match "x64-msvc15") {(get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "\#PYTHON = /cygdrive/c/Python26/python", "PYTHON = ${env:PYTHONPATHOMNI}"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_${env:platform}_vs_$env:MSVCABR.mk }
 
   - cmd: type "c:\projects\omniORB-4.2.1\mk\platforms\x86_%platform%_vs_%MSVCABR%.mk"
   #- cmd: set path=%path%;c:\cygwin64\bin
