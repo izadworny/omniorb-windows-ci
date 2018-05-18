@@ -125,7 +125,7 @@ install:
   - cmd: set PYTHONPATHOMNI = %PYTHONPATHOMNI%
   # Create 64 versions
   - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_14.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_15.mk
-  - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs15.mk) | foreach-object {$_ -replace "_vc14", "_vc15"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs15.mk
+  - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_15.mk) | foreach-object {$_ -replace "_vc14", "_vc15"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_15.mk
   - cmd: copy c:\projects\omniORB-4.2.1\mk\platforms\x86_win32_vs_%MSVCABR%.mk c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_%MSVCABR%.mk
   # Add 64 links
   - ps: (get-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_${env:MSVCABR}.mk) | foreach-object {$_ -replace "-DEBUG", "-DEBUG -MACHINE:X64"} | set-content c:\projects\omniORB-4.2.1\mk\platforms\x86_x64_vs_${env:MSVCABR}.mk
