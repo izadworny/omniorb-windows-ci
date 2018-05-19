@@ -166,7 +166,7 @@ install:
 build_script:
   - cmd: make export
 after_build:
-  - cmd: cd "C:\projects\omniorb-windows-ci"
+  - cmd: cd "C:\projects\omniorb-windows-ci-hujco"
   # Generating zip
   - cmd: 7z a omniorb-4.2.2_%ARCH%_%PYVER%.zip c:\projects\omniORB-4.2.2\bin\
   - cmd: 7z a omniorb-4.2.2_%ARCH%_%PYVER%.zip c:\projects\omniORB-4.2.2\lib\
