@@ -33,6 +33,8 @@ init:
   - del "C:\Program Files\Git\usr\bin\install.exe"
   - del "C:\Program Files\Git\usr\bin\mkdir.exe"
   - del "C:\Program Files\Git\usr\bin\cat.exe"
+  - del "C:\Program Files\Git\usr\bin\cut.exe"
+  - del "C:\Program Files\Git\usr\bin\cp.exe"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # OmniOrb
