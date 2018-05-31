@@ -32,7 +32,7 @@ init:
   # OmniOrb
   - cmd: cd "C:\projects\"
 #  - appveyor DownloadFile https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2
-  - cmd: Invoke-WebRequest "https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2" -OutFile "omniORB-4.2.1-2.tar.bz2"
+  - appveyor: Invoke-WebRequest "https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2" -OutFile "omniORB-4.2.1-2.tar.bz2"
   - cmd: 7z x omniORB-4.2.1-2.tar.bz2
   - cmd: 7z x omniORB-4.2.1-2.tar
   #Pthread-Win32
