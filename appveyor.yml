@@ -31,7 +31,10 @@ init:
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # OmniOrb
   - cmd: cd "C:\projects\"
-  - appveyor DownloadFile https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2
+#  - appveyor DownloadFile https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2
+  - cmd: $source = "https://downloads.sourceforge.net/project/omniorb/omniORB/omniORB-4.2.1/omniORB-4.2.1-2.tar.bz2"
+  - cmd: $destination = "omniORB-4.2.1-2.tar.bz2"
+  - cmd: Invoke-WebRequest $source -OutFile $destination
   - cmd: 7z x omniORB-4.2.1-2.tar.bz2
   - cmd: 7z x omniORB-4.2.1-2.tar
   #Pthread-Win32
