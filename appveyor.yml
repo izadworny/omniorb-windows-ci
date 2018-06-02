@@ -28,15 +28,15 @@ init:
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
 #  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   # conflict with cygwin
-#  - del "C:\Program Files\Git\usr\bin\rm.exe"
-#  - del "C:\Program Files\Git\usr\bin\basename.exe"
-#  - del "C:\Program Files\Git\usr\bin\install.exe"
-#  - del "C:\Program Files\Git\usr\bin\mkdir.exe"
-#  - del "C:\Program Files\Git\usr\bin\cat.exe"
-#  - del "C:\Program Files\Git\usr\bin\cut.exe"
-#  - del "C:\Program Files\Git\usr\bin\cp.exe"
-#  - del "C:\Program Files\Git\usr\bin\cmp.exe"
-#  - del "C:\Program Files\Git\usr\bin\grep.exe"
+  - del "C:\Program Files\Git\usr\bin\rm.exe"
+  - del "C:\Program Files\Git\usr\bin\basename.exe"
+  - del "C:\Program Files\Git\usr\bin\install.exe"
+  - del "C:\Program Files\Git\usr\bin\mkdir.exe"
+  - del "C:\Program Files\Git\usr\bin\cat.exe"
+  - del "C:\Program Files\Git\usr\bin\cut.exe"
+  - del "C:\Program Files\Git\usr\bin\cp.exe"
+  - del "C:\Program Files\Git\usr\bin\cmp.exe"
+  - del "C:\Program Files\Git\usr\bin\grep.exe"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # OmniOrb
