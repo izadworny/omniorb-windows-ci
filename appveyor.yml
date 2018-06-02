@@ -1,6 +1,6 @@
 version: 1.0.{build}
 
-image: Visual Studio 2015
+image: Visual Studio 2017
 
 environment:
   matrix:
@@ -26,17 +26,17 @@ environment:
       PYTHONPATHOMNI: "/cygdrive/c/Python35/python"
 init:
   # go to hell Xamarin (see http://help.appveyor.com/discussions/problems/4569)
-  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+#  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
   # conflict with cygwin
-  - del "C:\Program Files\Git\usr\bin\rm.exe"
-  - del "C:\Program Files\Git\usr\bin\basename.exe"
-  - del "C:\Program Files\Git\usr\bin\install.exe"
-  - del "C:\Program Files\Git\usr\bin\mkdir.exe"
-  - del "C:\Program Files\Git\usr\bin\cat.exe"
-  - del "C:\Program Files\Git\usr\bin\cut.exe"
-  - del "C:\Program Files\Git\usr\bin\cp.exe"
-  - del "C:\Program Files\Git\usr\bin\cmp.exe"
-  - del "C:\Program Files\Git\usr\bin\grep.exe"
+#  - del "C:\Program Files\Git\usr\bin\rm.exe"
+#  - del "C:\Program Files\Git\usr\bin\basename.exe"
+#  - del "C:\Program Files\Git\usr\bin\install.exe"
+#  - del "C:\Program Files\Git\usr\bin\mkdir.exe"
+#  - del "C:\Program Files\Git\usr\bin\cat.exe"
+#  - del "C:\Program Files\Git\usr\bin\cut.exe"
+#  - del "C:\Program Files\Git\usr\bin\cp.exe"
+#  - del "C:\Program Files\Git\usr\bin\cmp.exe"
+#  - del "C:\Program Files\Git\usr\bin\grep.exe"
   #RDP from start
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
   # OmniOrb
@@ -49,6 +49,7 @@ init:
   - cmd: cd "C:\projects\"
   - cmd: md pthreads-win32
   - cmd: cd "C:\projects\"
+  - cmd: dir
   - appveyor DownloadFile "http://www.mirrorservice.org/sites/sources.redhat.com/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip"
   - cmd: 7z -y x pthreads-w32-2-9-1-release.zip -oC:\projects\pthreads-win32\
 
